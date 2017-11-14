@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        var base_href = "/machine.git/trunk/userStory/";
+
+    </script>
+    <base href="/machine.git/trunk/">
+    <script src=""></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./angular_assignment/js/nginit.js"></script>
+    <script src="./angular_assignment/js/controller/marcoPoloController.js"></script>
+    <script src="./angular_assignment/js/controller/userStoryController.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row text-center">
+            <h3 class="well">Enuke Assignment</h3>
+        </div>
+        <div class="selectView">
+            <ul class="nav nav-pills">
+                <li><a href="marcoPolo">MarcoPolo</a></li>
+                <li><a href="menu2">Menu 2</a></li>
+                <li><a href="userStory">User Story</a></li>
+            </ul>
+
+        </div>
+        <div id="routeView" data-ng-view class="container-fluid"></div>
+    </div>
+
+</body>
+
+</html>
