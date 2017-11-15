@@ -23,33 +23,18 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
     
         for (var lineNumber = 0; lineNumber <= (lineWiseSplit.length)-1; lineNumber += 4) {
             var digitStored = [];
-            var currentLine = lineWiseSplit[lineNumber]; //FIRSTlINE
+            var firstLine   = lineWiseSplit[lineNumber]; //FIRSTlINE
+            var secondLine  = lineWiseSplit[lineNumber+1]; //SECONDlINE
+            var thirdLine   = lineWiseSplit[lineNumber+2]; //THIRDlINE
             var digitTracker  =   0;
-            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine  +=  3) {
-                digitStored[digitTracker++] = (currentLine.substring(firstLine, firstLine + 3)[1]);
-            }
-            currentLine = lineWiseSplit[lineNumber + 1];
-            digitTracker    =   0;
-            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine  +=  3) {
-                digitStored[digitTracker++] += (currentLine.substring(firstLine, firstLine + 3));
-            }
-            currentLine = lineWiseSplit[lineNumber + 2];
-            digitTracker    =   0;
             var decodedNumber =   '';
-            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine  +=  3) {
-                digitStored[digitTracker] += (currentLine.substring(firstLine, firstLine + 3));
-                decodedNumber +=   decodedNumbersMap[digitStored[digitTracker++]];
+            for (var i = 0; i <= firstLine.length - 1; i  +=  3) {
+                digitStored[digitTracker]   = (firstLine.substring(i,i + 3)[1]);
+                digitStored[digitTracker]   += (secondLine.substring(i,i + 3));
+                digitStored[digitTracker] += (thirdLine.substring(i,i + 3));
+                decodedNumber   +=   decodedNumbersMap[digitStored[digitTracker++]];
             }
             finalResult.push(decodedNumber);
         }
     }
-
-    $scope.parseInvoiceNumbers = function () {
-        var series = getNumber(inputUserStory);
-    }
-
-    $scope.getTopSecret = function () {
-        var series = getNumber(topSecret);
-    }
-
 };
