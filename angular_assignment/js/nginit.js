@@ -2,7 +2,7 @@ var app;
 var angularLoadCallback = function () {
     app = angular.module('enukeAssignment', ['ngRoute']);
     app.config(function ($routeProvider, $locationProvider, $httpProvider, $windowProvider) {
-        $routeProvider.templateUrlBase = './enuke_angular_assignment/template/';
+        $routeProvider.templateUrlBase = './angular_assignment/template/';
 
         $routeProvider
             .when('/', {})
@@ -25,7 +25,7 @@ var angularLoadCallback = function () {
     //    app.service('se_uiBlocker', se_uiBlocker);
 
 
-    //    app.directive('messageViewer', ['$http', wtApp.directive.messageViewer]);
+    app.directive('fileUploadDirective', ['$http', enukeAssignment.directive.fileUploadDirective]);
 
     if (typeof (marcoPoloController) != "undefined")
         app.controller('marcoPoloController', marcoPoloController);
