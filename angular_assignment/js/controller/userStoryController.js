@@ -5,11 +5,9 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
         $scope.fileUpload = fileUploadResult;
         var series = getNumber(fileUploadResult);
     }
-    var userStory = {};
-
     var getNumber = function (liner) {
         var lineWiseSplit = liner.split("\n");
-        var decodedNumbers = {
+        var decodedNumbersMap = {
             "_| ||_|": 0,
             "   |  |": 1,
             "_ _||_ ": 2,
@@ -22,27 +20,28 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
             "_|_| _|": 9
         }
         var finalResult = [];
-        var digitStored = [];
-
-        for (var lineNumber = 0; lineNumber <= (lineWiseSplit.length); lineNumber += 4) {
-            console.log(lineNumber);
-            if (lineNumber % 4 == 0)
-                digitStored = [];
+    
+        for (var lineNumber = 0; lineNumber <= (lineWiseSplit.length)-1; lineNumber += 4) {
+            var digitStored = [];
             var currentLine = lineWiseSplit[lineNumber]; //FIRSTlINE
-            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine++) {
-                digitStored[firstLine] = (currentLine.substring(firstLine, firstLine + 3)[1]);
+            var digitTracker  =   0;
+            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine  +=  3) {
+                digitStored[digitTracker++] = (currentLine.substring(firstLine, firstLine + 3)[1]);
             }
             currentLine = lineWiseSplit[lineNumber + 1];
-            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine++) {
-                digitStored[firstLine] += (currentLine.substring(firstLine, firstLine + 3));
+            digitTracker    =   0;
+            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine  +=  3) {
+                digitStored[digitTracker++] += (currentLine.substring(firstLine, firstLine + 3));
             }
             currentLine = lineWiseSplit[lineNumber + 2];
-            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine++) {
-                digitStored[firstLine] += (currentLine.substring(firstLine, firstLine + 3));
+            digitTracker    =   0;
+            var decodedNumber =   '';
+            for (var firstLine = 0; firstLine <= currentLine.length - 1; firstLine  +=  3) {
+                digitStored[digitTracker] += (currentLine.substring(firstLine, firstLine + 3));
+                decodedNumber +=   decodedNumbersMap[digitStored[digitTracker++]];
             }
+            finalResult.push(decodedNumber);
         }
-
-
     }
 
     $scope.parseInvoiceNumbers = function () {
