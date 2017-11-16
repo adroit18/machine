@@ -22,13 +22,6 @@ enukeAssignment.directive.fileUploadDirective = function ($http) {
                 };
                 reader.readAsBinaryString(file)
             });
-            scope.fileUpload = function (event) {
-                var url
-                $http.get(url).then(function (response) {
-                    $scope.myWelcome = response.data;
-                });
-                r.readAsBinaryString(f);
-            }
         }
     };
 };

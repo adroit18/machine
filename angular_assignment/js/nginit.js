@@ -1,6 +1,9 @@
 var app;
 var angularLoadCallback = function () {
     app = angular.module('enukeAssignment', ['ngRoute']);
+    app.config(['$compileProvider', function($compileProvider) {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(data?|file|tel|data):/);
+    }]);
     app.config(function ($routeProvider, $locationProvider, $httpProvider, $windowProvider) {
         $routeProvider.templateUrlBase = './angular_assignment/template/';
 

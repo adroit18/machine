@@ -1,11 +1,16 @@
 var userStoryController = function ($scope, $routeParams, $location, $window, $rootScope, $http) {
     'use strict';
-    $scope.fileInput = false;
+    $scope.readyToDownload = false;
     $scope.inputStoryUpload = function (fileUploadResult) {
-        $scope.fileUpload = fileUploadResult;
+        
         $scope.fileInput = $scope.getNumber(fileUploadResult);
         ($scope.fileInput) = ($scope.fileInput).toString().replace(/,/g, '\n');
-        $scope.fileOutputPathUrl = "data:application/octet-stream;charset=utf-16le;base64,//" + ($scope.fileInput);
+        
+        if(typeof($scope.fileInput)!="undefined" && ($scope.fileInput).length>=1){
+            $scope.readyToDownload  =   true; 
+            $scope.fileOutputPathUrl = 'data:application/plain;charset=utf-8,' + encodeURIComponent($scope.fileInput);
+            $scope.$apply();
+        }
     }
     $scope.getNumber = function (liner) {
         var lineWiseSplit = liner.split("\n");
