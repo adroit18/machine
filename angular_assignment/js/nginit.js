@@ -38,7 +38,7 @@ var angularLoadCallback = function () {
     });
 };
 
-$(function () {
+angular.element(document).ready(function () {
     loadScript('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js');
     loadScript("https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js", angularLoadCallback)
 
