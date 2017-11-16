@@ -3,11 +3,8 @@
         <div class="col-xs-3">
             <input type="file" file-upload-directive>
         </div>
-        <div class="col-xs-9">
-            <div data-ng-bind="fileInput">
-
-            </div>
-
+        <div class="col-xs-6" data-ng-if="fileInput">
+            <a data-ng-href="fileOutputPathUrl">text file</a>
         </div>
     </div>
 </div>

@@ -38,12 +38,10 @@ var angularLoadCallback = function () {
     });
 };
 
-angular.element(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function (event) {
     loadScript('https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js');
     loadScript("https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js", angularLoadCallback)
-
-
-});
+})
 
 function loadScript(url, callback, asyncFlag) {
     if (typeof (asyncFlag) == "undefined") {

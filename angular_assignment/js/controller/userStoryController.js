@@ -1,11 +1,13 @@
 var userStoryController = function ($scope, $routeParams, $location, $window, $rootScope, $http) {
     'use strict';
-    $scope.fileUpload = '';
+    $scope.fileInput = false;
     $scope.inputStoryUpload = function (fileUploadResult) {
         $scope.fileUpload = fileUploadResult;
-        var series = getNumber(fileUploadResult);
+        $scope.fileInput = $scope.getNumber(fileUploadResult);
+        ($scope.fileInput) = ($scope.fileInput).toString().replace(/,/g, '\n');
+        $scope.fileOutputPathUrl = "data:application/octet-stream;charset=utf-16le;base64,//" + ($scope.fileInput);
     }
-    var getNumber = function (liner) {
+    $scope.getNumber = function (liner) {
         var lineWiseSplit = liner.split("\n");
         var decodedNumbersMap = {
             "_| ||_|": 0,
@@ -20,21 +22,22 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
             "_|_| _|": 9
         }
         var finalResult = [];
-    
-        for (var lineNumber = 0; lineNumber <= (lineWiseSplit.length)-1; lineNumber += 4) {
+
+        for (var lineNumber = 0; lineNumber <= (lineWiseSplit.length) - 1; lineNumber += 4) {
             var digitStored = [];
-            var firstLine   = lineWiseSplit[lineNumber]; //FIRSTlINE
-            var secondLine  = lineWiseSplit[lineNumber+1]; //SECONDlINE
-            var thirdLine   = lineWiseSplit[lineNumber+2]; //THIRDlINE
-            var digitTracker  =   0;
-            var decodedNumber =   '';
-            for (var i = 0; i <= firstLine.length - 1; i  +=  3) {
-                digitStored[digitTracker]   = (firstLine.substring(i,i + 3)[1]);
-                digitStored[digitTracker]   += (secondLine.substring(i,i + 3));
-                digitStored[digitTracker] += (thirdLine.substring(i,i + 3));
-                decodedNumber   +=   decodedNumbersMap[digitStored[digitTracker++]];
+            var firstLine = lineWiseSplit[lineNumber]; //FIRSTlINE
+            var secondLine = lineWiseSplit[lineNumber + 1]; //SECONDlINE
+            var thirdLine = lineWiseSplit[lineNumber + 2]; //THIRDlINE
+            var digitTracker = 0;
+            var decodedNumber = '';
+            for (var i = 0; i <= firstLine.length - 1; i += 3) {
+                digitStored[digitTracker] = (firstLine.substring(i, i + 3)[1]);
+                digitStored[digitTracker] += (secondLine.substring(i, i + 3));
+                digitStored[digitTracker] += (thirdLine.substring(i, i + 3));
+                decodedNumber += decodedNumbersMap[digitStored[digitTracker++]];
             }
             finalResult.push(decodedNumber);
         }
+        return finalResult;
     }
 };

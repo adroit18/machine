@@ -1,8 +1,7 @@
 var marcoPoloController = function ($scope, $routeParams, $location, $window, $rootScope, $http) {
     'use strict';
-    var marcoPolo = {};
 
-    var getSeriesMarcoPolo = function (lastNumber) {
+    $scope.getSeriesMarcoPolo = function (lastNumber) {
         var series = [];
         var lineString = '';
         for (var i = 1; i <= lastNumber; i++) {
@@ -19,8 +18,9 @@ var marcoPoloController = function ($scope, $routeParams, $location, $window, $r
         series.push(lineString.substring(0, lineString.length - 1));
         return series;
     }
-
-    $scope.getGameResult = function (100) {
-        $scope.marcoPoloResult = (getSeriesMarcoPolo()).toString();
-    }();
+    $scope.seriesLimit = 100;
+    $scope.getGameResult = function (seriesLimit) {
+        $scope.marcoPoloResult = ($scope.getSeriesMarcoPolo(seriesLimit)).toString();
+    };
+    $scope.getGameResult($scope.seriesLimit);
 };
