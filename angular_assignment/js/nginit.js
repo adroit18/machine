@@ -5,7 +5,7 @@ var angularLoadCallback = function () {
         $compileProvider.aHrefSanitizationWhitelist(/^\s*(data?|file|tel|data):/);
     }]);
     app.config(function ($routeProvider, $locationProvider, $httpProvider, $windowProvider) {
-        $routeProvider.templateUrlBase = './angular_assignment/template/';
+        $routeProvider.templateUrlBase = '/template/';
 
         $routeProvider
             .when('/', {})

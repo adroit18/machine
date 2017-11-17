@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+        "express": "*",
+        "path": "*",
+        "routes": "*",
+        "body-parser": "*"
+    }
+}
