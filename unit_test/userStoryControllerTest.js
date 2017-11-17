@@ -32,7 +32,7 @@ describe('userStoryControllertest', function () {
             return true;
         }
         $scope.inputStoryUpload($scope.fileUploadResult);
-        expect($scope.fileInput).toBe("600143155\n");
+        expect($scope.fileInput).toBe("600143155\r\n");
     });
     it('user_story_test_for_459179489_and_485640368', function () {
         var $scope = {};
@@ -59,7 +59,7 @@ describe('userStoryControllertest', function () {
             return true;
         }
         $scope.inputStoryUpload($scope.fileUploadResult);
-        expect($scope.fileInput).toBe("459179489\n485640368\n");
+        expect($scope.fileInput).toBe("459179489\r\n485640368\r\n");
     });
 
 });

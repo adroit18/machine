@@ -4,7 +4,7 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
     $scope.inputStoryUpload = function (fileUploadResult) {
 
         $scope.fileInput = $scope.getNumber(fileUploadResult);
-        ($scope.fileInput) = ($scope.fileInput).toString().replace(/,/g, '\n');
+        ($scope.fileInput) = ($scope.fileInput).toString().replace(/,/g, '\r\n');
 
         if (typeof ($scope.fileInput) != "undefined" && ($scope.fileInput).length >= 1) {
             $scope.readyToDownload = true;
