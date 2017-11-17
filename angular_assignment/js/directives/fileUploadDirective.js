@@ -4,7 +4,7 @@ enukeAssignment.directive.fileUploadDirective = function ($http) {
     'use strict';
     return {
         scope: true,
-        templateUrl: 'angular_assignment/template/fileUploadDirective.html',
+        //        templateUrl: 'angular_assignment/template/fileUploadDirective.html',
         link: function (scope, elem, attr) {
             elem.on("change", function (e) {
 

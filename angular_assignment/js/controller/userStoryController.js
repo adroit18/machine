@@ -2,12 +2,12 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
     'use strict';
     $scope.readyToDownload = false;
     $scope.inputStoryUpload = function (fileUploadResult) {
-        
+
         $scope.fileInput = $scope.getNumber(fileUploadResult);
         ($scope.fileInput) = ($scope.fileInput).toString().replace(/,/g, '\n');
-        
-        if(typeof($scope.fileInput)!="undefined" && ($scope.fileInput).length>=1){
-            $scope.readyToDownload  =   true; 
+
+        if (typeof ($scope.fileInput) != "undefined" && ($scope.fileInput).length >= 1) {
+            $scope.readyToDownload = true;
             $scope.fileOutputPathUrl = 'data:application/plain;charset=utf-8,' + encodeURIComponent($scope.fileInput);
             $scope.$apply();
         }

@@ -1,20 +1,65 @@
-//describe('fileUploadDirective', function () {
-//  var element;
-//  var scope;
-//  var files;
-//
-//  beforeEach(module('enukeAssignment'));
-//
-//  afterEach(function() {
-//    scope.$destroy();
-//  });
-//
-//  it('should call a file upload method onchange event', function() {
-//    
-//    scope.uploadFile = jasmine.createSpy();
-//
-//    element.triggerHandler('change');
-//
-//    expect(scope.uploadFile).toHaveBeenCalled();
-//  });
-//});
+describe('userStoryControllertest', function () {
+
+    var $compile;
+    var $rootScope;
+    var $controller;
+
+    beforeEach(function () {
+        module('enukeAssignment');
+        inject(function (_$compile_, _$rootScope_, _$controller_) {
+            $compile = _$compile_;
+            $rootScope = _$rootScope_;
+            $controller = _$controller_;
+        });
+    });
+    it('user_story_test_for_600143155', function () {
+        var $scope = {};
+        var controller = $controller('userStoryController', {
+            $scope: $scope
+        });
+
+        $scope.fileArray = [
+                                            [" _  _  _        _     _  _ "],
+                                            ["|_ | || |  ||_| _|  ||_ |_ "],
+                                            ["|_||_||_|  |  | _|  | _| _|"],
+                                            ["                           "]
+                                        ];
+        $scope.fileUploadResult = '';
+        $scope.fileArray.forEach(function (value, key) {
+            $scope.fileUploadResult = $scope.fileUploadResult + value + "\n";
+        });
+        $scope.$apply = function () {
+            return true;
+        }
+        $scope.inputStoryUpload($scope.fileUploadResult);
+        expect($scope.fileInput).toBe("600143155\n");
+    });
+    it('user_story_test_for_459179489_and_485640368', function () {
+        var $scope = {};
+        var controller = $controller('userStoryController', {
+            $scope: $scope
+        });
+
+        $scope.fileArray = [
+                                    ["    _  _     _  _     _  _ "],
+                                    ["|_||_ |_|  |  ||_||_||_||_|"],
+                                    ["  | _| _|  |  | _|  ||_| _|"],
+                                    ["                           "],
+                                    ["    _  _  _     _  _  _  _ "],
+                                    ["|_||_||_ |_ |_|| | _||_ |_|"],
+                                    ["  ||_| _||_|  ||_| _||_||_|"],
+                                    ["                           "],
+                            ];
+
+        $scope.fileUploadResult = '';
+        $scope.fileArray.forEach(function (value, key) {
+            $scope.fileUploadResult = $scope.fileUploadResult + value + "\n";
+        });
+        $scope.$apply = function () {
+            return true;
+        }
+        $scope.inputStoryUpload($scope.fileUploadResult);
+        expect($scope.fileInput).toBe("459179489\n485640368\n");
+    });
+
+});
