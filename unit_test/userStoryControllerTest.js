@@ -42,7 +42,7 @@ describe('userStoryControllertest', function () {
 
         $scope.fileArray = [
                                     ["    _  _     _  _     _  _ "],
-                                    ["|_||_ |_|  |  ||_||_||_||_|"],
+                                    ["|_||_ | |  |  ||_||_||_||_|"],
                                     ["  | _| _|  |  | _|  ||_| _|"],
                                     ["                           "],
                                     ["    _  _  _     _  _  _  _ "],
@@ -59,7 +59,7 @@ describe('userStoryControllertest', function () {
             return true;
         }
         $scope.inputStoryUpload($scope.fileUploadResult);
-        expect($scope.fileInput).toBe("459179489\r\n485640368\r\n");
+        expect($scope.fileInput).toBe("45?179489 ILLEGAL\r\n485640368\r\n");
     });
 
 });

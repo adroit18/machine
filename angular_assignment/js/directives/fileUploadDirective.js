@@ -1,6 +1,6 @@
 var enukeAssignment = enukeAssignment || {};
 enukeAssignment.directive = enukeAssignment.directive || {};
-enukeAssignment.directive.fileUploadDirective = function ($http) {
+enukeAssignment.directive.fileUploadDirective = function () {
     'use strict';
     return {
         scope: true,

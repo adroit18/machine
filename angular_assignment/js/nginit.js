@@ -17,18 +17,18 @@ var angularLoadCallback = function () {
                 controller: 'userStoryController',
                 templateUrl: $routeProvider.templateUrlBase + 'userStory.html'
             })
+            .when('/directiveAnswere', {
+                controller: 'directiveAnswereController',
+                templateUrl: $routeProvider.templateUrlBase + 'directiveAnswere.html'
+            })
             .otherwise({
                 templateUrl: $routeProvider.templateUrlBase + '404Page.html'
             });
         $locationProvider.html5Mode({
             enabled: true,
-            requireBase: false
         });
     });
-    //    app.service('se_uiBlocker', se_uiBlocker);
-
-
-    app.directive('fileUploadDirective', ['$http', enukeAssignment.directive.fileUploadDirective]);
+    app.directive('fileUploadDirective', [ enukeAssignment.directive.fileUploadDirective]);
 
     if (typeof (marcoPoloController) != "undefined")
         app.controller('marcoPoloController', marcoPoloController);
@@ -36,6 +36,10 @@ var angularLoadCallback = function () {
     if (typeof (userStoryController) != "undefined")
         app.controller('userStoryController', userStoryController);
 
+    if (typeof (directiveAnswereController) != "undefined")
+        app.controller('directiveAnswereController', directiveAnswereController);
+
+    
     angular.element(document).ready(function () {
         angular.bootstrap(document, ['enukeAssignment'], {});
     });
@@ -53,7 +57,7 @@ function loadScript(url, callback, asyncFlag) {
     var script = document.createElement("script")
     script.type = "text/javascript";
     script.async = asyncFlag;
-    if (script.readyState) { //IE
+    if (script.readyState) { 
         script.onreadystatechange = function () {
             if (script.readyState == "loaded" ||
                 script.readyState == "complete") {
@@ -64,7 +68,7 @@ function loadScript(url, callback, asyncFlag) {
                     console.log();
             }
         };
-    } else { //Others
+    } else { 
         script.onload = function () {
             if (typeof (callback) != "undefined")
                 callback();

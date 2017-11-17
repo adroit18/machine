@@ -1,4 +1,4 @@
-var userStoryController = function ($scope, $routeParams, $location, $window, $rootScope, $http) {
+var userStoryController = function ($scope, $rootScope) {
     'use strict';
     $scope.readyToDownload = false;
     $scope.inputStoryUpload = function (fileUploadResult) {
@@ -39,9 +39,18 @@ var userStoryController = function ($scope, $routeParams, $location, $window, $r
                 digitStored[digitTracker] = (firstLine.substring(i, i + 3)[1]);
                 digitStored[digitTracker] += (secondLine.substring(i, i + 3));
                 digitStored[digitTracker] += (thirdLine.substring(i, i + 3));
-                decodedNumber += decodedNumbersMap[digitStored[digitTracker++]];
+                if(typeof(decodedNumbersMap[digitStored[digitTracker]])!="undefined"){
+                    decodedNumber += decodedNumbersMap[digitStored[digitTracker++]];
+                }
+                else {
+                    decodedNumber += '?';
+                    digitTracker++;
+                }
             }
-            finalResult.push(decodedNumber);
+            if(decodedNumber.indexOf('?')   >  -1)
+                finalResult.push(decodedNumber+" ILLEGAL");
+            else
+                finalResult.push(decodedNumber);
         }
         return finalResult;
     }

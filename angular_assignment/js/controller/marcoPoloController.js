@@ -1,4 +1,4 @@
-var marcoPoloController = function ($scope, $routeParams, $location, $window, $rootScope, $http) {
+var marcoPoloController = function ($scope,$rootScope) {
     'use strict';
 
     $scope.getSeriesMarcoPolo = function (lastNumber) {
