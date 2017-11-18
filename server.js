@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 
 app.use(express.static('angular_assignment'));
 app.use(express.static('unit_test'));
+app.use(express.static('node_modules'));
+
 
 app.listen(portNum, function () {
     console.log('Example app listening on port ' + portNum + '!');

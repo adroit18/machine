@@ -17,8 +17,9 @@ Download node and npm from https://nodejs.org/en/.
 2. Change parent folder to machine from machine.git
 3. Folder Structure is 
                         machine/trunk -> angular_assignment
-                                        ||
+                                        &&
                         machine/trunk -> unit_test       
+
 4. Run command "npm install" in command prompt to get all dependencies for nodejs server.
 5. Run command "node server.js" in command prompt to start server
 
@@ -26,6 +27,4 @@ Visit "http://localhost:201" !!
 
 # For running test cases
  
-1. Go to unit_test folder. 
-2. Run command "npm install" (it will load package.json) in command prompt
-3. Output of test cases can be seen by hitting file "http://localhost:201/machine/trunk/unit_test/specRunner.html"
+1. Output of test cases can be seen by hitting file "http://localhost:201/machine/trunk/unit_test/specRunner.html"

@@ -1,8 +1,24 @@
 {
-    "dependencies": {
-        "express": "*",
-        "path": "*",
-        "routes": "*",
-        "body-parser": "*"
-    }
+  "name": "angular_assignment",
+  "version": "1.0.0",
+  "description": "angular_assignment",
+  "main": "server.js",
+  "dependencies": {
+    "angular-mocks": "^1.6.6",
+    "angular": "^1.6.6",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "jasmine-core": "^2.8.0",
+    "karma-jasmine": "^1.1.0",
+    "express": "*",
+    "path": "*",
+    "routes": "*",
+    "body-parser": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
