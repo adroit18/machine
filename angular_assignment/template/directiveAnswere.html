@@ -1,3 +1,9 @@
 <div class="container">
-    <p data-ng-model="directiveAnswere">{{directiveAnswere}}</p>
+    <h3>{{question}}</h3>
+    <div data-ng-repeat="answere in directiveAnswere">
+        <h4 data-ng-if="deepak.indexOf($index)>-1">
+            {{answere}}
+        </h4>
+        <p data-ng-if="deepak.indexOf($index)<=-1" data-ng-bind="answere">{{answere}}</p>
+    </div>
 </div>
