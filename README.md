@@ -1,5 +1,3 @@
-# machine_test
-
 # Introduction
 
 this angular-app is made as assignment to 3 questions 
